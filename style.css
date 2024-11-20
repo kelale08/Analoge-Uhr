@@ -1,3 +1,4 @@
+/* Main clock container */
 .clock {
     position: relative;
     width: 200px;
@@ -7,6 +8,7 @@
     margin: auto;
 }
 
+/* Glow effect for the clock background */
 .clock::before {
     content: '';
     position: absolute;
@@ -16,13 +18,14 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    box-shadow: 0 0 200px rgba(73, 70, 70, 0.5);
+    box-shadow: 0 0 200px rgb(35, 35, 35);
     border-radius: 50%;
     z-index: -1;
     background-size: cover;
     background-position: center;
 }
 
+/* Common style for all clock hands */
 .hand {
     position: absolute;
     width: 50%;
@@ -32,34 +35,38 @@
     top: 50%;
     left: 0%;
     transform-origin: 100%;
-    transition: transform 0.4s cubic-bezier(0.6, -0.7, 0.25, 1.6); /* Gemeinsame Animation für alle Zeiger */
+    transition: transform 0.4s cubic-bezier(0.6, -0.7, 0.25, 1.6);
 }
 
+/* Hour hand style */
 .hour-hand {
     height: 6px;
     width: 51.1%;
     background: black;
     z-index: 1;
-    transition: transform 1s cubic-bezier(0.6, -0.7, 0.25, 1.6); /* Langsame Animation */
+    transition: transform 1s cubic-bezier(0.6, -0.7, 0.25, 1.6);
 }
 
+/* Minute hand style */
 .min-hand {
     height: 4px;
     width: 49.1%;
     background: gray;
     z-index: 2;
-    transition: transform 0.8s cubic-bezier(0.6, -0.7, 0.25, 1.6); /* Schnellere Animation */
+    transition: transform 0.8s cubic-bezier(0.6, -0.7, 0.25, 1.6);
 }
 
+/* Second hand style */
 .second-hand {
     height: 2px;
     width: 50%;
     background: red;
     z-index: 3;
     transform-origin: 100%;
-    transition: transform 0.4s cubic-bezier(0.6, -0.7, 0.25, 1.6); /* Schnellste Animation */
+    transition: transform 0.4s cubic-bezier(0.6, -0.7, 0.25, 1.6);
 }
 
+/* Center point in the middle of the clock */
 .inner-clock-face::after {
     content: '';
     position: absolute;
@@ -73,18 +80,19 @@
     z-index: 4;
 }
 
+/* Body styles for the background */
 body {
     display: flex;
     background: url(img/hintergrundbild_4.jpg);
-    background-size: cover; /* Bild füllt den gesamten Bildschirm */
-    background-position: center; /* Bild ist zentriert */
-    background-attachment: fixed; /* Bild bleibt fixiert, auch beim Scrollen */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     height: 100vh;
     justify-content: center;
     align-items: center;
 }
 
-/* Show houres mark(fixed by Mael) */
+/* Hour markings on the clock */
 .marking {
   position: absolute;
   width: 2%;
@@ -99,7 +107,8 @@ body {
   transform-origin: center bottom;
   border-radius: 2px;
 }
-/* Show minute mark(fixed by Mael) */
+
+/* Minute markings on the clock */
 .minute-marking {
   z-index: 0;
   position: absolute;
@@ -114,15 +123,20 @@ body {
   left: 49.5%;
   transform-origin: center bottom;
 }
+
+/* Hide specific markings */
 .marking-one {
     display: none;
-  }
-  .marking-two {
+}
+
+.marking-two {
     display: none;
-  }
-  .marking-three {
+}
+
+.marking-three {
     display: none;
-  }
-  .marking-four {
+}
+
+.marking-four {
     display: none;
-  }
+}

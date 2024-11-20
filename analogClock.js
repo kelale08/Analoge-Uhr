@@ -1,4 +1,4 @@
-let totalSeconds = 0; // Zählt die gesamten Sekunden seit dem Start
+let totalSeconds = 0; // Counts the total seconds since the start
 
 function updateClock() {
     const now = new Date();
@@ -6,26 +6,26 @@ function updateClock() {
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
 
-    // Berechnung der Zeigerwinkel
-    const hourDeg = (hours % 12) * 30 + (minutes / 60) * 30; // Stundenzeiger
-    const minDeg = minutes * 6; // Minutenzeiger
+    // Calculate the angles for the clock hands
+    const hourDeg = (hours % 12) * 30 + (minutes / 60) * 30; // Hour hand
+    const minDeg = minutes * 6; // Minute hand
 
-    // Gesamte Sekunden akkumulieren
+    // Accumulate total seconds
     totalSeconds = hours * 3600 + minutes * 60 + seconds;
 
-    // Verschiebe den Sekundenzeiger um 6° nach vorne (eine Sekunde)
-    const secDeg = (totalSeconds + 1) * 6; // 6° pro Sekunde und +1 Sekunde
+    // Move the second hand by 6° forward (one second)
+    const secDeg = (totalSeconds + 1) * 6; // 6° per second and +1 second
 
-    // Zeiger aktualisieren
+    // Update the hands
     document.querySelector('.hour-hand').style.transform = `rotate(${90 + hourDeg}deg)`;
     document.querySelector('.min-hand').style.transform = `rotate(${90 + minDeg}deg)`;
-    document.querySelector('.second-hand').style.transform = `rotate(${90 + secDeg}deg)`; // Sekundenzeiger eine Sekunde nach vorne
+    document.querySelector('.second-hand').style.transform = `rotate(${90 + secDeg}deg)`; // Move second hand one second forward
 }
 
-// Aktualisiere die Uhr jede Sekunde
+// Update the clock every second
 setInterval(updateClock, 1000);
 
-// Starte die Uhr sofort
+// Start the clock immediately
 updateClock();
 const clock = document.querySelector(".clock");
 
