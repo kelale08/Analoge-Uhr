@@ -1,23 +1,23 @@
-// Funktion, um die Zeit zu aktualisieren
+// Funktion, um die Uhrzeit zu aktualisieren
 function updateClock() {
-    const now = new Date(); // Aktuelle Zeit
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
+    const now = new Date(); // Hol die aktuelle Zeit
+    const hours = now.getHours(); // Hol die Stunden
+    const minutes = now.getMinutes(); // Hol die Minuten
+    const seconds = now.getSeconds(); // Hol die Sekunden
 
-    // Berechnungen für Drehung der Zeiger
-    const hourDeg = (hours % 12) * 30 + (minutes / 60) * 30; // 30 Grad pro Stunde + zusätzlicher Anteil durch Minuten
-    const minDeg = minutes * 6; // 6 Grad pro Minute
-    const secDeg = seconds * 6; // 6 Grad pro Sekunde
+    // Berechne, wie weit die Zeiger drehen sollen
+    const hourDeg = (hours % 12) * 30 + (minutes / 60) * 30; // Stundenzeiger
+    const minDeg = minutes * 6; // Minutenzeiger
+    const secDeg = seconds * 6; // Sekundenzeiger
 
-    // Setze die Drehung der Zeiger
-    document.querySelector('.hour-hand').style.transform = `rotate(${90 + hourDeg}deg)`;
-    document.querySelector('.min-hand').style.transform = `rotate(${90 + minDeg}deg)`;
-    document.querySelector('.second-hand').style.transform = `rotate(${90 + secDeg}deg)`;
+    // Dreh die Zeiger
+    document.querySelector('.hour-hand').style.transform = `rotate(${90 + hourDeg}deg)`; // Stundenzeiger drehen
+    document.querySelector('.min-hand').style.transform = `rotate(${90 + minDeg}deg)`; // Minutenzeiger drehen
+    document.querySelector('.second-hand').style.transform = `rotate(${90 + secDeg}deg)`; // Sekundenzeiger drehen
 }
 
-// Initialisiere die Uhr und starte das Update alle 1000ms (1 Sekunde)
+// Uhr wird jede Sekunde aktualisiert
 setInterval(updateClock, 1000);
 
-// Aktualisierung der Uhr
+// Uhr startet sofort
 updateClock();

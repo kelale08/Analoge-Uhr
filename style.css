@@ -1,57 +1,64 @@
 .clock {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border: 5px solid black;
-    border-radius: 50%;
-    margin: auto;
+    /* Das Hauptgehäuse der Uhr, ein Kreis mit einer festen Größe */
+    position: relative; 
+    width: 200px; /* Breite der Uhr */
+    height: 200px; /* Höhe der Uhr */
+    border: 5px solid black; /* Schwarzer Rand der Uhr */
+    border-radius: 50%; /* Macht die Uhr rund */
+    margin: auto; /* Zentriert die Uhr auf der Seite */
+    /* Fügt das Ziffernblatt-Bild als Hintergrund ein */
+    background: url(img/ziffernblatt3.jpg) no-repeat center center;
+    background-size: cover; /* Das Bild füllt die Uhr */
+    background-position: 50%; /* Das Bild wird perfekt zentriert */
 }
 
 .hand {
-    position: absolute;
-    width: 50%; /* Die Länge des Zeigers */
-    height: 4px;
-    background: black;
-    top: 50%; /* Startpunkt in der Mitte */
-    left: 0%; /* Startpunkt in der Mitte */
-    transform-origin: 100%; /* Drehpunkt am Ende des Zeigers */
-    transition: transform 0.01s ease-in-out; /* Für flüssige Animationen */
+    /* Allgemeines Design für die Zeiger */
+    position: absolute; /* Positionieren innerhalb der Uhr */
+    width: 50%; /* Länge der Zeiger (50% der Uhr) */
+    height: 5px; /* Dicke der Zeiger */
+    background: black; /* Farbe der Zeiger */
+    border-radius: 20px; /* Macht die Zeiger-Enden abgerundet */
+    top: 50%; /* Startpunkt in der Mitte der Uhr */
+    left: 0%; /* Startpunkt am Rand */
+    transform-origin: 100%; /* Drehpunkt ist das Ende des Zeigers */
+    transition: transform 0s ease-in-out; /* Zeiger bewegen sich ohne Animation */
 }
 
 .hour-hand {
-    height: 6px; /* Dickere Linie für Stundenzeiger */
-    width: 50%;
-    background: black;
-    z-index: 3; /* Ganz oben */
-    transform: rotate(90deg);
+    /* Design für den Stundenzeiger */
+    height: 6px; /* Dickster Zeiger */
+    width: 51.1%; /* Etwas länger als die anderen Zeiger */
+    background: black; /* Farbe: Schwarz */
+    z-index: 1; /* Liegt über dem Minuten- und Sekundenzeiger */
 }
 
 .min-hand {
-    height: 4px;
-    width: 48%;
-    background: gray;
-    z-index: 2; /* Unter dem Stundenzeiger */ 
-    transform: rotate(60deg);
+    /* Design für den Minutenzeiger */
+    height: 4px; /* Dünner als der Stundenzeiger */
+    width: 49.1%; /* Etwas kürzer als der Stundenzeiger */
+    background: gray; /* Farbe: Grau */
+    z-index: 2; /* Liegt unter dem Stundenzeiger, aber über dem Sekundenzeiger */
 }
 
 .second-hand {
-    height: 2px;
-    width: 50%;
-    background: red;
-    z-index: 1; /* Unter den anderen Zeigern */
-    transform: rotate(30deg);
+    /* Design für den Sekundenzeiger */
+    height: 2px; /* Dünnster Zeiger */
+    width: 50%; /* Länge des Sekundenzeigers */
+    background: red; /* Farbe: Rot */
+    z-index: 3; /* Liegt unter den anderen beiden Zeigern */
 }
 
 .inner-clock-face::after {
-    content: '';
-    position: absolute;
-    width: 10px; /* Durchmesser des Punkts */
-    height: 10px; /* Durchmesser des Punkts */
-    background: black; /* Farbe des Punkts */
-    border-radius: 50%; /* Runde Form */
-    top: 50%; /* Zentrierung */
-    left: 50%; /* Zentrierung */
-    transform: translate(-50%, -50%); /* Exakte Mitte */
-    z-index: 4; /* Über den Zeigern */
+    /* Der kleine Punkt in der Mitte der Uhr */
+    content: ''; /* Füllt den Punkt aus */
+    position: absolute; /* Positionierung innerhalb der Uhr */
+    width: 10px; /* Breite des Punkts */
+    height: 10px; /* Höhe des Punkts */
+    background: black; /* Farbe: Schwarz */
+    border-radius: 50%; /* Macht den Punkt rund */
+    top: 50%; /* Punkt zentrieren (vertikal) */
+    left: 50%; /* Punkt zentrieren (horizontal) */
+    transform: translate(-50%, -50%); /* Exakte Zentrierung */
+    z-index: 4; /* Punkt liegt über allen Zeigern */
 }
-
