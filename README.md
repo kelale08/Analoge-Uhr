@@ -11,9 +11,3 @@ Die Zeiger (Stunden, Minuten und Sekunden) bewegen sich basierend auf der tatsä
 - Markierungen für jede Stunde (1 bis 12).
 - Zentrales Punkt-Element in der Mitte der Uhr.
 - Responsives Design für verschiedene Bildschirmgrößen.
-
-## Installation
-
-1. **Clone oder Downloade das Projekt**:
-   ```bash
-   git clone https://github.com/dein-benutzername/analoge-uhr.git
