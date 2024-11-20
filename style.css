@@ -1,64 +1,128 @@
 .clock {
-    /* Das Hauptgehäuse der Uhr, ein Kreis mit einer festen Größe */
-    position: relative; 
-    width: 200px; /* Breite der Uhr */
-    height: 200px; /* Höhe der Uhr */
-    border: 5px solid black; /* Schwarzer Rand der Uhr */
-    border-radius: 50%; /* Macht die Uhr rund */
-    margin: auto; /* Zentriert die Uhr auf der Seite */
-    /* Fügt das Ziffernblatt-Bild als Hintergrund ein */
-    background: url(img/ziffernblatt3.jpg) no-repeat center center;
-    background-size: cover; /* Das Bild füllt die Uhr */
-    background-position: 50%; /* Das Bild wird perfekt zentriert */
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 5px solid black;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 200px rgba(73, 70, 70, 0.5);
+    border-radius: 50%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
 }
 
 .hand {
-    /* Allgemeines Design für die Zeiger */
-    position: absolute; /* Positionieren innerhalb der Uhr */
-    width: 50%; /* Länge der Zeiger (50% der Uhr) */
-    height: 5px; /* Dicke der Zeiger */
-    background: black; /* Farbe der Zeiger */
-    border-radius: 20px; /* Macht die Zeiger-Enden abgerundet */
-    top: 50%; /* Startpunkt in der Mitte der Uhr */
-    left: 0%; /* Startpunkt am Rand */
-    transform-origin: 100%; /* Drehpunkt ist das Ende des Zeigers */
-    transition: transform 0s ease-in-out; /* Zeiger bewegen sich ohne Animation */
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    background: black;
+    border-radius: 20px;
+    top: 50%;
+    left: 0%;
+    transform-origin: 100%;
+    transition: transform 0.4s cubic-bezier(0.6, -0.7, 0.25, 1.6); /* Gemeinsame Animation für alle Zeiger */
 }
 
 .hour-hand {
-    /* Design für den Stundenzeiger */
-    height: 6px; /* Dickster Zeiger */
-    width: 51.1%; /* Etwas länger als die anderen Zeiger */
-    background: black; /* Farbe: Schwarz */
-    z-index: 1; /* Liegt über dem Minuten- und Sekundenzeiger */
+    height: 6px;
+    width: 51.1%;
+    background: black;
+    z-index: 1;
+    transition: transform 1s cubic-bezier(0.6, -0.7, 0.25, 1.6); /* Langsame Animation */
 }
 
 .min-hand {
-    /* Design für den Minutenzeiger */
-    height: 4px; /* Dünner als der Stundenzeiger */
-    width: 49.1%; /* Etwas kürzer als der Stundenzeiger */
-    background: gray; /* Farbe: Grau */
-    z-index: 2; /* Liegt unter dem Stundenzeiger, aber über dem Sekundenzeiger */
+    height: 4px;
+    width: 49.1%;
+    background: gray;
+    z-index: 2;
+    transition: transform 0.8s cubic-bezier(0.6, -0.7, 0.25, 1.6); /* Schnellere Animation */
 }
 
 .second-hand {
-    /* Design für den Sekundenzeiger */
-    height: 2px; /* Dünnster Zeiger */
-    width: 50%; /* Länge des Sekundenzeigers */
-    background: red; /* Farbe: Rot */
-    z-index: 3; /* Liegt unter den anderen beiden Zeigern */
+    height: 2px;
+    width: 50%;
+    background: red;
+    z-index: 3;
+    transform-origin: 100%;
+    transition: transform 0.4s cubic-bezier(0.6, -0.7, 0.25, 1.6); /* Schnellste Animation */
 }
 
 .inner-clock-face::after {
-    /* Der kleine Punkt in der Mitte der Uhr */
-    content: ''; /* Füllt den Punkt aus */
-    position: absolute; /* Positionierung innerhalb der Uhr */
-    width: 10px; /* Breite des Punkts */
-    height: 10px; /* Höhe des Punkts */
-    background: black; /* Farbe: Schwarz */
-    border-radius: 50%; /* Macht den Punkt rund */
-    top: 50%; /* Punkt zentrieren (vertikal) */
-    left: 50%; /* Punkt zentrieren (horizontal) */
-    transform: translate(-50%, -50%); /* Exakte Zentrierung */
-    z-index: 4; /* Punkt liegt über allen Zeigern */
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
 }
+
+body {
+    display: flex;
+    background: url(img/hintergrundbild_4.jpg);
+    background-size: cover; /* Bild füllt den gesamten Bildschirm */
+    background-position: center; /* Bild ist zentriert */
+    background-attachment: fixed; /* Bild bleibt fixiert, auch beim Scrollen */
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Show houres mark(fixed by Mael) */
+.marking {
+  position: absolute;
+  width: 2%;
+  height: 35%;
+  background: linear-gradient(
+    180deg,
+    rgb(0, 0, 0) 33%,
+    rgba(0, 0, 0, 0) 34%
+  );
+  top: 15%;
+  left: 49.25%;
+  transform-origin: center bottom;
+  border-radius: 2px;
+}
+/* Show minute mark(fixed by Mael) */
+.minute-marking {
+  z-index: 0;
+  position: absolute;
+  width: 1%;
+  height: 34.5%;
+  background: linear-gradient(
+    180deg,
+    rgb(145, 145, 145) 10%,
+    rgba(0, 0, 0, 0) 10%
+  );
+  top: 15.55%;
+  left: 49.5%;
+  transform-origin: center bottom;
+}
+.marking-one {
+    display: none;
+  }
+  .marking-two {
+    display: none;
+  }
+  .marking-three {
+    display: none;
+  }
+  .marking-four {
+    display: none;
+  }
