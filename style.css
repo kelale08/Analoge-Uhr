@@ -1,0 +1,57 @@
+.clock {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 5px solid black;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.hand {
+    position: absolute;
+    width: 50%; /* Die Länge des Zeigers */
+    height: 4px;
+    background: black;
+    top: 50%; /* Startpunkt in der Mitte */
+    left: 0%; /* Startpunkt in der Mitte */
+    transform-origin: 100%; /* Drehpunkt am Ende des Zeigers */
+    transition: transform 0.01s ease-in-out; /* Für flüssige Animationen */
+}
+
+.hour-hand {
+    height: 6px; /* Dickere Linie für Stundenzeiger */
+    width: 50%;
+    background: black;
+    z-index: 3; /* Ganz oben */
+    transform: rotate(90deg);
+}
+
+.min-hand {
+    height: 4px;
+    width: 48%;
+    background: gray;
+    z-index: 2; /* Unter dem Stundenzeiger */ 
+    transform: rotate(60deg);
+}
+
+.second-hand {
+    height: 2px;
+    width: 50%;
+    background: red;
+    z-index: 1; /* Unter den anderen Zeigern */
+    transform: rotate(30deg);
+}
+
+.inner-clock-face::after {
+    content: '';
+    position: absolute;
+    width: 10px; /* Durchmesser des Punkts */
+    height: 10px; /* Durchmesser des Punkts */
+    background: black; /* Farbe des Punkts */
+    border-radius: 50%; /* Runde Form */
+    top: 50%; /* Zentrierung */
+    left: 50%; /* Zentrierung */
+    transform: translate(-50%, -50%); /* Exakte Mitte */
+    z-index: 4; /* Über den Zeigern */
+}
+
